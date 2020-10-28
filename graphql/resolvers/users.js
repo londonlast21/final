@@ -22,6 +22,7 @@ function generateToken(user){
 
 module.exports = {
     Mutation: {
+        
         // log in functionality
         async login(
             _,
