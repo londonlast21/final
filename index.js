@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers');
-const { MONGODBURI } = require('./config');
+const { MONGODB_URI } = require('./config');
 
 
 const server = new ApolloServer({
@@ -12,8 +12,9 @@ const server = new ApolloServer({
 });
 
 mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb://localhost/transapp', 
+    MONGODB_URI || 'mongodb://localhost/transapp', 
     { useNewUrlParser: true }, 
+    { useUnifiedTopolgy: true },
     { useFindAndModify: false } )
     .then(() => {
         console.log('MongoDB Connected');
