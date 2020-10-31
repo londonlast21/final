@@ -14,9 +14,9 @@ const server = new ApolloServer({
 
 mongoose.connect(
     MONGODB_URI || 'mongodb://localhost/transapp', 
-    { useNewUrlParser: true }, 
-    { useUnifiedTopolgy: true },
-    { useFindAndModify: false } )
+    { useNewUrlParser: true, 
+     useUnifiedTopology: true,
+    useFindAndModify: false } )
     .then(() => {
         console.log('MongoDB Connected');
         return server.listen({ port: 3003 });

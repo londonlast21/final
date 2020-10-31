@@ -2,7 +2,7 @@ const { model, Schema } = require('mongoose');
 
 const postSchema = new Schema({
     // need to check to make sure name is unique
-    name: String,
+    name:{type: String, unique: true},
 
     type: String,
     location: String,
