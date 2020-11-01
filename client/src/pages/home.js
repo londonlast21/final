@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useEffect, useState } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { Grid } from 'semantic-ui-react';
 
@@ -9,21 +9,25 @@ import PostForm from '../components/PostForm';
 
 
 function Home() {
+
+
     const { user } = useContext(AuthContext)
     
     const { data = {}} = useQuery(FETCH_POSTS_QUERY);
 
     const post = data.getPosts;
-    
 
-    console.log(post);
    
-
+ 
     return (
         <Grid columns={3}>
             <Grid.Row className="page-title">
                 <h1>TSafety Directory</h1>
             </Grid.Row>
+
+            <h1>
+                {post}
+            </h1>
 
 
 
@@ -44,6 +48,7 @@ function Home() {
         </Grid>
     );     
 }
+
 
 const FETCH_POSTS_QUERY = gql`
 
