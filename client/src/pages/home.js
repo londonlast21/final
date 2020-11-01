@@ -30,7 +30,7 @@ function Home() {
              </Grid.Row>
         </Grid>
     );     
-};
+}
 
 const FETCH_POSTS_QUERY = gql`
 
@@ -48,6 +48,7 @@ const FETCH_POSTS_QUERY = gql`
         username 
         createdAt 
         body
+    }
     }
 
 }

@@ -14,7 +14,7 @@ function PostCard({ post: { name, type, createdAt, id, username, commentCount, l
                         <li>{type}</li>
                         <li>{location}</li>
                         <li>Added by {username}</li>
-                        <li>{commentCount}</li>
+                        <li>Reviews: {commentCount}</li>
                     
                     </ul>
                 </Card.Description>
