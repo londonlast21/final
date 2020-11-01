@@ -34,12 +34,15 @@ module.exports = {
     Mutation: {
 
         async createPost(
-            _,
-            { name, location, type }){
-
+            parent,
+            { name, location, type }, context){
+                
+            const  user = checkAuth(context);
+            
+                
             const { valid, errors } = validatePostInput(name, location, type);
 
-             const user = checkAuth(context);
+             
              console.log(user);
 
              // errors to throw if input errors

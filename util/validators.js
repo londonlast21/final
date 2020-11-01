@@ -56,6 +56,7 @@ module.exports.validatePostInput = (
     }
 }
 
+
 module.exports.validateLoginInput = (username, password) => {
     const errors = {};
     if(username.trim() === '') {
@@ -71,15 +72,3 @@ module.exports.validateLoginInput = (username, password) => {
     }
 }
 
-module.exports.validatePostInput = (name, location, type) => {
-    const errors = {};
-    if(name.trim() === '') {
-        errors.name = 'Name cannot be blank';
-    }
-    if (location.trim() === '') {
-        errors.location = 'Location cannot be left blank';
-    }
-    if (type.trim() === '') {
-        errors.type = 'Type/specialty cannot be left blank';
-    }
-}
