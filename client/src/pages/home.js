@@ -8,10 +8,12 @@ import PostCard from '../components/PostCard';
 function Home() {
     
     
-    const { loading, data } = useQuery(FETCH_POSTS_QUERY);
+    const {data = {}} = useQuery(FETCH_POSTS_QUERY);
+
+    const post = data.getPosts;
     
 
-    console.log(data);
+    console.log(post);
    
 
     return (
@@ -20,17 +22,15 @@ function Home() {
                 <h1>TSafety Directory</h1>
             </Grid.Row>
 
-            {/* <Grid.Row>
-                {loading ? (
-                    <h1>Loading Directory...</h1>
-                ) : (
-                    posts && posts.map(post => (
+            <Grid.Row>
+                {(
+                    post && post.map(post => (
                         <Grid.Column key={post.id} style={{ marginBottom: 10 }}>
                             <PostCard post={post} />
                         </Grid.Column>
                     )) 
                 )} 
-             </Grid.Row> */}
+             </Grid.Row>
         </Grid>
     );     
 }
