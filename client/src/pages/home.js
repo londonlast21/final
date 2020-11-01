@@ -13,7 +13,7 @@ function Home() {
 
     return (
         <Grid columns={3}>
-            <Grid.Row>
+            <Grid.Row className="page-title" >
                 <h1>TSafety Directory</h1>
             </Grid.Row>
 
@@ -22,7 +22,7 @@ function Home() {
                     <h1>Loading Directory...</h1>
                 ) : (
                     posts && posts.map(post => (
-                        <Grid.Column key={post.id}>
+                        <Grid.Column key={post.id} style={{ marginBottom: 10 }}>
                             <PostCard post={post} />
                         </Grid.Column>
                     )) 
