@@ -6,6 +6,7 @@ import PostCard from '../components/PostCard';
 
 
 function Home() {
+    
     const { loading, data: { getPosts: posts } } = useQuery(FETCH_POSTS_QUERY);
 
 
@@ -13,7 +14,7 @@ function Home() {
 
     return (
         <Grid columns={3}>
-            <Grid.Row >
+            <Grid.Row className="page-title">
                 <h1>TSafety Directory</h1>
             </Grid.Row>
 
