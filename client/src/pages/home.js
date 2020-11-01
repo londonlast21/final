@@ -6,30 +6,40 @@ import PostCard from '../components/PostCard';
 
 
 function Home() {
-    const { loading, data: { getPosts: posts } } = useQuery(FETCH_POSTS_QUERY);
+    const { loading, data } = useQuery(FETCH_POSTS_QUERY);
+
+    if (data) {
+        console.log(data);
+    }
+
+    return (
+        <div>
+            <h1>Home</h1>
+        </div>
+    )
 
 
    
 
-    return (
-        <Grid columns={3}>
-            <Grid.Row >
-                <h1>TSafety Directory</h1>
-            </Grid.Row>
+    // return (
+    //     <Grid columns={3}>
+    //         <Grid.Row >
+    //             <h1>TSafety Directory</h1>
+    //         </Grid.Row>
 
-            <Grid.Row>
-                {loading ? (
-                    <h1>Loading Directory...</h1>
-                ) : (
-                    posts && posts.map(post => (
-                        <Grid.Column key={post.id} style={{ marginBottom: 10 }}>
-                            <PostCard post={post} />
-                        </Grid.Column>
-                    )) 
-                )} 
-             </Grid.Row>
-        </Grid>
-    );     
+    //         <Grid.Row>
+    //             {loading ? (
+    //                 <h1>Loading Directory...</h1>
+    //             ) : (
+    //                 posts && posts.map(post => (
+    //                     <Grid.Column key={post.id} style={{ marginBottom: 10 }}>
+    //                         <PostCard post={post} />
+    //                     </Grid.Column>
+    //                 )) 
+    //             )} 
+    //          </Grid.Row>
+    //     </Grid>
+    // );     
 }
 
 const FETCH_POSTS_QUERY = gql`
