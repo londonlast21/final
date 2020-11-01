@@ -13,7 +13,7 @@ function Home() {
 
     return (
         <Grid columns={3}>
-            <Grid.Row className="page-title" >
+            <Grid.Row >
                 <h1>TSafety Directory</h1>
             </Grid.Row>
 
