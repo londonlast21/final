@@ -27,6 +27,7 @@ module.exports = {
         async login(
             _,
             { username, password }){
+                
                 const { errors, valid } = validateLoginInput(username, password);
 
                 if(!valid){

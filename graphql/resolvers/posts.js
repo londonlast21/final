@@ -1,7 +1,8 @@
 const Post = require('../../models/Post');
 const checkAuth = require('../../util/checkAuth');
-const { AuthenticationError } = require('apollo-server');
+const { AuthenticationError, UserInputError } = require('apollo-server');
 
+const { validatePostInput } = require('../../util/validators');
 
 module.exports = {
     Query: {
@@ -28,13 +29,22 @@ module.exports = {
           }
         }
     },
+
+
     Mutation: {
-        async createPost(_, { name, location, type }, context){
+
+        async createPost(
+            _,
+            { name, location, type }){
+
+            const { valid, errors } = validatePostInput(name, location, type);
+
              const user = checkAuth(context);
              console.log(user);
 
-             if (args.body.trim() === '') {
-                 throw new Error('Post body cannot be empty');
+             // errors to throw if input errors
+             if(!valid){
+                 throw new UserInputError('Errors', { errors });
              }
 
              const newPost = new Post({
@@ -49,6 +59,7 @@ module.exports = {
 
             return post;
         },
+
         async deletePost(_, { postId }, context){
             const user = checkAuth(context);
 

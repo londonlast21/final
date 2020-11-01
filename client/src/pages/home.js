@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { Grid } from 'semantic-ui-react';
+
+import { AuthContext } from '../context/auth';
 import PostCard from '../components/PostCard';
+import PostForm from '../components/PostForm';
 
 
 function Home() {
+    const { user } = useContext(AuthContext)
     
-    
-    const {data = {}} = useQuery(FETCH_POSTS_QUERY);
+    const { data = {}} = useQuery(FETCH_POSTS_QUERY);
 
     const post = data.getPosts;
     
@@ -22,7 +25,14 @@ function Home() {
                 <h1>TSafety Directory</h1>
             </Grid.Row>
 
+
+
             <Grid.Row>
+                {user && (
+                    <Grid.Column>
+                        <PostForm/>
+                    </Grid.Column>
+                )}
                 {(
                     post && post.map(post => (
                         <Grid.Column key={post.id} style={{ marginBottom: 10 }}>
