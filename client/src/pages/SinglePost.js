@@ -1,10 +1,11 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
-import { Card, Grid, Button } from 'semantic-ui-react';
+import { Card, Grid, Button, Icon } from 'semantic-ui-react';
 import moment from 'moment';
 
 import { AuthContext } from '../context/auth';
+import DeleteButton from '../components/DeleteButton';
 
 function SinglePost(props){
     const postId = props.match.params.postId;
@@ -56,11 +57,14 @@ function SinglePost(props){
                             labelPosition="right"
                             onClick={() => console.log('comment on a post')} 
                             >
-                                <Button basic color="instagram">
+                                <Button  color="blue">
+                                    Leave Review
                                 </Button>
                                 
                             </Button>
-                    
+                            {/* {user && user.username === username && (
+                                <DeleteButton postId={id} />
+                            )} */}
                         </Card.Content>
                     </Card>
 
@@ -70,6 +74,7 @@ function SinglePost(props){
 
         )
     }
+    return postMarkup;
 }
 
 const FETCH_POST_QUERY = gql`
