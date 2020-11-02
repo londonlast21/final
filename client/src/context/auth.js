@@ -5,7 +5,7 @@ const initialState = {
     user: null
 };
 
-if(localStorage.getItem('jwtToken')){
+if(localStorage.getItem('jwtToken')) {
     const decodedToken = jwtDecode(localStorage.getItem('jwtToken'));
 
     if(decodedToken.exp * 1000 < Date.now()){
