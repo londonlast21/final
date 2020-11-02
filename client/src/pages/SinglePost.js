@@ -69,7 +69,7 @@ function SinglePost(props){
 
                         <Card.Content extra>
                         
-                        <Button 
+                        {/* <Button 
                             as="div"
                             labelPosition="right"
                             onClick={() => console.log('comment on a post')} 
@@ -78,7 +78,7 @@ function SinglePost(props){
                                     Leave Review
                                 </Button>
                                 
-                            </Button>
+                            </Button> */}
                             {user && user.username === username && (
 
                                 <DeleteButton postId={id}  callback={deletePostCallback} />

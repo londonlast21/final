@@ -46,8 +46,10 @@ module.exports = {
                  createdAt: new Date().toISOString()
             });
             const post = await newPost.save();
+            console.log(post);
 
             return post;
+
         },
         async deletePost(_, { postId }, context){
             const user = checkAuth(context);
