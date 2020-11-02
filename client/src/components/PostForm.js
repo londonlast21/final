@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'semantic-ui-react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
+
 
 import { useForm } from '../util/hooks';
 import { FETCH_POSTS_QUERY } from '../util/graphql';
 
 function PostForm(){
+
+    function refreshPage() {
+        window.location.reload(false);
+    }
+
+    
+    
 
     const { values, onChange, onSubmit } = useForm(createPostCallback, {
         name: '',
@@ -30,7 +38,12 @@ function PostForm(){
 
     function createPostCallback(){
         createPost();
+
+        refreshPage(true);
+        
+        
     }
+    
 
     return (
         <>
@@ -63,12 +76,12 @@ function PostForm(){
                     error={error ? true : false}
                     />
                 
-                <Button type="submit" color="instagram">
+                <Button type="submit" color="instagram" >
                     Submit
                 </Button>
             </Form.Field>
         </Form>
-
+        
         
         {error && (
             <div className="ui error message" style={{ margin: 10 }}>
@@ -79,6 +92,7 @@ function PostForm(){
         )}
     </>
     );
+    
 
 }
 
