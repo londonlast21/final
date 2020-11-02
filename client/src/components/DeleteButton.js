@@ -67,5 +67,6 @@ const DELETE_COMMENT_MUTATION = gql`
         }
     }
 `
+;
 
 export default DeleteButton;

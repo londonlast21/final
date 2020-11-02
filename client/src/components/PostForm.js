@@ -33,6 +33,7 @@ function PostForm(){
     }
 
     return (
+        <>
         <Form onSubmit={onSubmit}>
             <h2>Add a Provider</h2>
             <Form.Field>
@@ -42,6 +43,8 @@ function PostForm(){
                     name="name"
                     onChange={onChange}
                     value={values.name}
+                    error={error ? true : false}
+                    onChange={onChange}
                     />
 
                 <Form.Input
@@ -49,6 +52,7 @@ function PostForm(){
                     name="location"
                     onChange={onChange}
                     value={values.location}
+                    error={error ? true : false}
                     />
 
                 <Form.Input
@@ -56,16 +60,25 @@ function PostForm(){
                     name="type"
                     onChange={onChange}
                     value={values.type}
+                    error={error ? true : false}
                     />
                 
                 <Button type="submit" color="instagram">
                     Submit
                 </Button>
-
-
             </Form.Field>
         </Form>
-    )
+
+        
+        {error && (
+            <div className="ui error message" style={{ margin: 10 }}>
+                <ul className="list">
+                    <li>{error.graphQLErrors[0].message}</li>
+                </ul>
+            </div>
+        )}
+    </>
+    );
 
 }
 
