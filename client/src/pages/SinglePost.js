@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { Card, Grid, Button, Icon } from 'semantic-ui-react';
@@ -10,7 +10,7 @@ import DeleteButton from '../components/DeleteButton';
 function SinglePost(props){
     const postId = props.match.params.postId;
 
-    //const { user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     console.log(postId);
 
@@ -21,6 +21,10 @@ function SinglePost(props){
     });
 
     const getPost = data.getPost;
+
+    function deletePostCallback(){
+        props.history.push('/');
+    }
 
 
     let postMarkup;
@@ -62,9 +66,9 @@ function SinglePost(props){
                                 </Button>
                                 
                             </Button>
-                            {/* {user && user.username === username && (
-                                <DeleteButton postId={id} />
-                            )} */}
+                            {user && user.username === username && (
+                                <DeleteButton postId={id}  callback={deletePostCallback} />
+                            )}
                         </Card.Content>
                     </Card>
 
