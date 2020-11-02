@@ -5,6 +5,7 @@ import moment from 'moment';
 
 
 import { AuthContext } from '../context/auth';
+import DeleteButton from './DeleteButton';
 
 
 function PostCard({ post: { name, type, createdAt, id, username, commentCount, location }}){
@@ -34,15 +35,8 @@ function PostCard({ post: { name, type, createdAt, id, username, commentCount, l
             <Button color='instagram' as={Link} to={`/posts/${id}`}>
                 Leave Review
             </Button>
-
-            <Button
-                as="div"
-                color="red"
-                floated="right"
-                onClick={() => console.log('Delete entry')}
-            >
-                <Icon name="trash" style={{ margin: 0 }} />
-            </Button>
+            {/* delet button only shows up on posts user has created */}
+            {user && user.username === username && <DeleteButton postId={id} />}
           
             </Card.Content>
         </Card>
