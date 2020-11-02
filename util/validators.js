@@ -34,8 +34,7 @@ module.exports.validatePostInput = (
     name,
     type,
     location,
-    username,
-    createdAt
+  
 ) => {
     const errors = {};
     if(name.trim() === ''){

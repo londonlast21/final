@@ -33,8 +33,8 @@ module.exports = {
              const user = checkAuth(context);
              console.log(user);
 
-             if (args.body.trim() === '') {
-                 throw new Error('Post body cannot be empty');
+             if (name.trim() === '') {
+                 throw new Error('Post name cannot be empty');
              }
 
              const newPost = new Post({
