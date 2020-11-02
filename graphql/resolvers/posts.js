@@ -1,6 +1,6 @@
 const Post = require('../../models/Post');
 const checkAuth = require('../../util/checkAuth');
-const { AuthenticationError } = require('apollo-server');
+const { AuthenticationError, UserInputError } = require('apollo-server');
 
 
 module.exports = {
@@ -9,6 +9,7 @@ module.exports = {
             try{
                 const posts = await Post.find().sort({ createdAt: -1 });
                 console.log(posts);
+                
                 return posts;
             } catch(err) {
                 throw new Error(err);
@@ -43,10 +44,18 @@ module.exports = {
                  location,
                  username: user.username,
                  user: user.id,
+
+                 //createdAt is throwing undefined
                  createdAt: new Date().toISOString()
             });
             const post = await newPost.save();
             console.log(post);
+            console.log(typeof name)
+            console.log(typeof type)
+            console.log(typeof location)
+            console.log(typeof (user.username))
+            console.log(typeof (user.id))
+            console.log(typeof createdAt)
 
             return post;
 
