@@ -16,6 +16,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/home';
 import Login from './pages/login';
 import Signup from './pages/signup';
+import SinglePost from './pages/SinglePost';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route exact path='/' component={Home}/>
         <AuthRoute exact path='/login' component={Login}/>
         <AuthRoute exact path='/signup' component={Signup}/>
+        <Route exact path="/posts/:postId" component={SinglePost}/>
         
         </Container>
       </Router>

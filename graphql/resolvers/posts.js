@@ -1,6 +1,6 @@
 const Post = require('../../models/Post');
 const checkAuth = require('../../util/checkAuth');
-const { AuthenticationError } = require('apollo-server');
+const { AuthenticationError, UserInputError } = require('apollo-server');
 
 
 module.exports = {
@@ -9,6 +9,7 @@ module.exports = {
             try{
                 const posts = await Post.find().sort({ createdAt: -1 });
                 console.log(posts);
+                
                 return posts;
             } catch(err) {
                 throw new Error(err);
@@ -33,8 +34,8 @@ module.exports = {
              const user = checkAuth(context);
              console.log(user);
 
-             if (args.body.trim() === '') {
-                 throw new Error('Post body cannot be empty');
+             if (name.trim() === '') {
+                 throw new Error('Post name cannot be empty');
              }
 
              const newPost = new Post({
@@ -46,8 +47,8 @@ module.exports = {
                  createdAt: new Date().toISOString()
             });
             const post = await newPost.save();
-
             return post;
+
         },
         async deletePost(_, { postId }, context){
             const user = checkAuth(context);

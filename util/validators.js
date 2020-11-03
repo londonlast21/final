@@ -29,32 +29,31 @@ module.exports.validateRegisterInput = (
 
 }
 
-// make validator to prevent double entry of medical providers
-module.exports.validatePostInput = (
-    name,
-    type,
-    location,
-    username,
-    createdAt
-) => {
-    const errors = {};
-    if(name.trim() === ''){
-        errors.name = 'Provider name cannot be blank';
-    } else {
+// make validator eventually to prevent double entry of medical providers
+// module.exports.validatePostInput = (
+//     name,
+//     type,
+//     location,
+  
+// ) => {
+//     const errors = {};
+//     if(name.trim() === ''){
+//         errors.name = 'Provider name cannot be blank';
+//     } else {
 
-    }
-    if(type.trim() === ''){
-        errors.type = 'Please add provider type';
-    }
-    if(location.trim() === ''){
-        errors.location = 'Please add provider location';
-    }
+//     }
+//     if(type.trim() === ''){
+//         errors.type = 'Please add provider type';
+//     }
+//     if(location.trim() === ''){
+//         errors.location = 'Please add provider location';
+//     }
 
-    return {
-        errors,
-        valid: Object.keys(errors).length < 1
-    }
-}
+//     return {
+//         errors,
+//         valid: Object.keys(errors).length < 1
+//     }
+// }
 
 module.exports.validateLoginInput = (username, password) => {
     const errors = {};
