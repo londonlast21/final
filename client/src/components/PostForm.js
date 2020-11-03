@@ -9,12 +9,6 @@ import { FETCH_POSTS_QUERY } from '../util/graphql';
 
 function PostForm(){
 
-    function refreshPage() {
-        window.location.reload(false);
-    }
-
-    
-    
 
     const { values, onChange, onSubmit } = useForm(createPostCallback, {
         name: '',
@@ -38,7 +32,7 @@ function PostForm(){
 
     function createPostCallback(){
         createPost();
-        refreshPage(true);
+        window.location.reload();
     }
     
 
