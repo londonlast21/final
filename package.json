@@ -21,9 +21,7 @@
     "nodemon": "^2.0.6",
     "react": "^17.0.1",
     "react-icons": "^3.11.0",
-    "react-router-dom": "^5.2.0",
     "semantic": "0.0.1",
-    "semantic-ui-css": "^2.4.1",
     "ui": "^0.2.4"
   },
   "devDependencies": {
