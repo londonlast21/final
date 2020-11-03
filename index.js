@@ -13,9 +13,10 @@ const server = new ApolloServer({
 });
 
 mongoose.connect(
-    MONGODB_URI || 'mongodb://localhost/transapp', 
+    process.env.MONGODB_URI || 'mongodb://localhost/transapp', 
     { useNewUrlParser: true, 
      useUnifiedTopology: true,
+     useCreateIndex: true,
     useFindAndModify: false } )
     .then(() => {
         console.log('MongoDB Connected');
