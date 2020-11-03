@@ -48,7 +48,6 @@ function PostForm(){
                     onChange={onChange}
                     value={values.name}
                     error={error ? true : false}
-                    onChange={onChange}
                     />
 
                 <Form.Input
