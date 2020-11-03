@@ -1,0 +1,15 @@
+.page-title {
+  display: block !important;
+  text-align: center;
+  font-size: 4rem;
+}
+
+.form-container {
+  width: 400px;
+  margin: auto;
+}
+
+.signup-title {
+  text-align: center;
+}
+
