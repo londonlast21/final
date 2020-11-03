@@ -7,10 +7,6 @@ import { FETCH_POSTS_QUERY } from '../util/graphql';
 
 function DeleteButton({ postId, commentId, callback }){
 
-    function refreshPage() {
-        window.location.reload(false);
-    }
-    
     const [confirmOpen, setConfirmOpen] = useState(false);
 
     const mutation = commentId ? DELETE_COMMENT_MUTATION : DELETE_POST_MUTATION;
@@ -28,7 +24,8 @@ function DeleteButton({ postId, commentId, callback }){
                 // remove post in cache
                 proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
             }
-            if (callback) callBackFunc();
+            if (callback) callback();
+            window.location.reload();
         },
         variables: {
             postId,
@@ -38,11 +35,7 @@ function DeleteButton({ postId, commentId, callback }){
         
     });
 
-    function callBackFunc(){
-        callback();
-        refreshPage();
-    }
-
+    
     return(
         <>
         <Button
