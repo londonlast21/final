@@ -38,7 +38,7 @@ function PostForm(){
 
     function createPostCallback(){
         createPost();
-        refreshPage();
+        refreshPage(true);
     }
     
 
