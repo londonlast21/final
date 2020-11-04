@@ -1,33 +1,23 @@
+
 {
-  "name": "transapp",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "serve": "node index",
-    "start": "node index",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "apollo-server": "^2.19.0",
-    "apollo-server-express": "^2.19.0",
-    "bcryptjs": "^2.4.3",
-    "express": "^4.17.1",
-    "graphql": "^15.4.0",
-    "graphql-tag": "^2.11.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.11",
-    "nodemon": "^2.0.6",
-    "react": "^17.0.1",
-    "react-icons": "^3.11.0",
-    "semantic": "0.0.1",
-    "ui": "^0.2.4"
-  },
-  "devDependencies": {
-    "webpack-pwa-manifest": "^4.2.0"
-  },
-  "proxy": "https://arcane-tundra-25408.herokuapp.com/"
-}
+    "name": "transapp",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server/index.js",
+    "scripts": {
+      "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+      "start:prod": "cd server && npm start",
+      "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+      "install": "cd server && npm i && cd ../client && npm i",
+      "seed": "cd server && npm run seed",
+      "heroku-postbuild": "cd client && npm run build"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "if-env": "^1.0.4"
+    },
+    "devDependencies": {
+      "concurrently": "^5.1.0"
+    }
+  }
