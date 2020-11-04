@@ -48,7 +48,7 @@ mongoose.connect(
     useFindAndModify: false } )
     .then(() => {
         console.log('MongoDB Connected');
-        return server.listen({ port: PORT });
+        return app.listen({ port: PORT });
     })
 
     .then((res) => {
