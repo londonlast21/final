@@ -41,7 +41,7 @@ app.get('*', (req, res) => {
 
 
 mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb://localhost/transapp', 
+    process.env.MONGODB_URI || '0.0.0.0', 
     { useNewUrlParser: true, 
      useUnifiedTopology: true,
      useCreateIndex: true,
