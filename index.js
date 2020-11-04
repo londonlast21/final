@@ -6,16 +6,27 @@ const resolvers = require('./graphql/resolvers');
 //const { MONGODB_URI } = process.env.MONGODB_URI;
 
 
+const express = require('express');
+
+const app = express();
+
+
 const PORT = process.env.PORT || 3003;
 
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-    introspection: true,
-    playground: true,
+    // introspection: true,
+    // playground: true,
     
     context: ({ req }) => ({ req })
 });
+
+server.applyMiddleware({
+    app
+});
+
+app.use(express.static(path.join(__dirname, "../client/build")));
 
 mongoose.connect(
     process.env.MONGODB_URI || 'mongodb://localhost/transapp', 
