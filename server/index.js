@@ -40,7 +40,7 @@ app.get('*', (req, res) => {
 
 
 mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb://localhost/transapp', 
+    MONGODB_URI || 'mongodb://localhost/transapp', 
     { useNewUrlParser: true, 
      useUnifiedTopology: true,
      useCreateIndex: true,
@@ -51,7 +51,7 @@ mongoose.connect(
     })
 
     .then((res) => {
-        console.log(`Server running at ${res.url}`)
+        console.log(`Server running at ${server.graphqlPath}`)
     })
 
     .catch(err => {
