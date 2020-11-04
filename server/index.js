@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers');
 //const { MONGODB_URI } = require('./config');
-const { MONGODB_URI } = process.env.MONGODB_URI;
+//const { MONGODB_URI } = process.env.MONGODB_URI;
 
 const path = require('path');
 
@@ -41,7 +41,7 @@ app.get('*', (req, res) => {
 
 
 mongoose.connect(
-    MONGODB_URI || 'mongodb://localhost/transapp', 
+    process.env.MONGODB_URI || 'mongodb://localhost/transapp', 
     { useNewUrlParser: true, 
      useUnifiedTopology: true,
      useCreateIndex: true,
