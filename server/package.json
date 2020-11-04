@@ -29,6 +29,5 @@
   },
   "devDependencies": {
     "webpack-pwa-manifest": "^4.2.0"
-  },
-  "proxy": "https://arcane-tundra-25408.herokuapp.com/"
+  }
 }
