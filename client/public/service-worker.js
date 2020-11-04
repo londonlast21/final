@@ -35,7 +35,7 @@ const FILES_TO_CACHE = [
 
 
 ];
-const hat = require('../../server/graphql/')
+
 
 
 self.addEventListener('install', function (e) {
