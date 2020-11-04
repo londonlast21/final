@@ -51,7 +51,7 @@ mongoose.connect(
     })
 
     .then((res) => {
-        console.log(`Server running at ${server.graphqlPath}`)
+        console.log(`Server running at localhost:3003${server.graphqlPath}`)
     })
 
     .catch(err => {
