@@ -15,7 +15,7 @@ const server = new ApolloServer({
 });
 
 mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb://localhost/transapp', 
+    process.env.MONGODB_URI || 'mongodb://localhost/transapp/graphql', 
     { useNewUrlParser: true, 
      useUnifiedTopology: true,
      useCreateIndex: true,
