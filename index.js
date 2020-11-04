@@ -1,5 +1,6 @@
 const { ApolloServer } = require('apollo-server');
 const mongoose = require('mongoose');
+const express = require('apollo-server-express');
 
 const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers');
@@ -11,11 +12,17 @@ const PORT = process.env.PORT || 3003;
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-    context: ({ req }) => ({ req })
+    // context: ({ req }) => ({ req })
 });
 
+
+const app = express();
+server.applyMiddleware({ app });
+
+app.listen({ PORT });
+
 mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb://localhost/transapp/graphql', 
+    process.env.MONGODB_URI || 'mongodb://localhost/transapp', 
     { useNewUrlParser: true, 
      useUnifiedTopology: true,
      useCreateIndex: true,
